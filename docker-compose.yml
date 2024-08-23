@@ -1,5 +1,21 @@
 version: '3.9'
 services:
+  consumer:
+    container_name: bet_maker_consumer
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-consumer
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./:/code
+    networks:
+      - betting_network
+
   web:
     container_name: bet_maker
     build:

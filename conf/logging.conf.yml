@@ -1,0 +1,15 @@
+version: 1
+disable_existing_loggers: no
+handlers:
+  console:
+    class: logging.StreamHandler
+root:
+  level: INFO
+  handlers: [console]
+loggers:
+  'bet_maker':
+    level: INFO
+    propagate: yes
+  'uvicorn':
+    level: INFO
+    propagate: yes
